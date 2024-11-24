@@ -39,3 +39,7 @@ for result in fsm_results:
         d['interface'] = interface
         ]
     )
+# Define the regex patterns to match the input data
+route_pattern = r"^\s*(?P<RouteType>[A-Za-z\*]+)\s+(?P<Destination>\S+/\d+)\s+\[(?P<Distance>\d+)\s*/\s*(?P<Metric>\d+)\](?:\s+via\s+(?P<NextHop>\S+))?"
+# Pattern for directly connected and local routes (C and L lines) with Vlan or Interface info
+via_pattern = r"^\s*(?P<RouteType>[A-Za-z])\s+(?P<Destination>\S+/\d+)\s+is\s+(?P<ConnectionType>directly connected),\s+Vlan(?P<Vlan>\S+)(?:\s+or\s+(?P<Interface>\S+))?"
